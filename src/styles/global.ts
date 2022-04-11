@@ -11,6 +11,8 @@ export default createGlobalStyle`
   :root {
     --white: #ffffff;
     --black: #000000;
+
+    --grey-300: #cccccc;
   }
   
   body {

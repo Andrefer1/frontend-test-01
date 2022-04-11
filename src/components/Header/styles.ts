@@ -1,14 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  outline: solid 1px;
-  margin: 0 auto;
   margin-bottom: 20px;
 `;
 
 export const Content = styled.div`
-  outline: solid 1px red;
   max-width: 1200px;
+  border-bottom: solid 1px var(--grey-300);
   margin: 0 auto;
 
   display: flex;
