@@ -2,15 +2,9 @@ import { useState } from "react";
 import { AddCircle } from '@mui/icons-material';
 
 import { Chart } from "../../components/Chart";
+import { TChart } from '../../@types'
 
 import { Container, Content } from './styles'
-
-export type TChart = {
-    id: string
-    dataName: string
-    titleText: string
-    seriesName: string
-}
 
 let newChart = {
     id: '1',
