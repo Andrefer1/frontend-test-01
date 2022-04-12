@@ -3,10 +3,17 @@ import Exporting from 'highcharts/modules/exporting';
 
 Exporting(Highcharts)
 
-export function Chart() {
-    Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-c.json', function (data: any) {
+interface ChartProps {
+    id: string
+    dataName: string
+    titleText: string
+    seriesName: string
+}
 
-        Highcharts.chart('container', {
+export function Chart({ id, dataName, titleText, seriesName }: ChartProps) {
+    Highcharts.getJSON(`https://demo-live-data.highcharts.com/${dataName}.json`, function (data: any) {
+
+        Highcharts.chart(`chart-${id}`, {
             credits: {
                 enabled: false
             },
@@ -15,11 +22,11 @@ export function Chart() {
             },
             title: {
                 align: 'left',
-                text: 'AAPL Stock Price'
+                text: titleText
             },
             series: [{
                 type: 'line',
-                name: 'AAPL',
+                name: seriesName,
                 data: data,
             }]
         })
@@ -27,7 +34,7 @@ export function Chart() {
 
     return (
         <>
-            <div id="container"></div>
+            <div id={`chart-${id}`} />
         </>
     )
 }
