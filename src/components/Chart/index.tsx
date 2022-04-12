@@ -7,6 +7,9 @@ export function Chart() {
     Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-c.json', function (data: any) {
 
         Highcharts.chart('container', {
+            credits: {
+                enabled: false
+            },
             rangeSelector: {
                 selected: 1
             },
