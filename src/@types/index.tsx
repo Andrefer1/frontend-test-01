@@ -3,7 +3,7 @@ export type Data = [
 ]
 
 export type TChart = {
-    id: string
+    id: number
     dataName: string
     titleText: string
     seriesName: string
