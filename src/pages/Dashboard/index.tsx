@@ -1,7 +1,10 @@
+import { Chart } from "../../components/Chart";
+
 export default function Dashboard() {
+
     return (
         <>
-            <h1>Dashboard</h1>
+            <Chart />
         </>
     )
 }
