@@ -5,10 +5,11 @@ import { Data, TChart } from "../../@types";
 
 interface ChartProps {
     chart: TChart
+    editChart: (id: number) => void
     deleteChart: (id: number) => void
 }
 
-export function Chart({ chart, deleteChart }: ChartProps) {
+export function Chart({ chart, editChart, deleteChart }: ChartProps) {
     const { id, dataName, titleText, seriesName } = chart
 
     Exporting(Highcharts)
@@ -29,21 +30,7 @@ export function Chart({ chart, deleteChart }: ChartProps) {
                     menuItemDefinitions: {
                         Edit: {
                             onclick: function () {
-                                this.renderer.label(
-                                    'You just clicked a custom menu item',
-                                    100,
-                                    100
-                                )
-                                    .attr({
-                                        fill: '#a4edba',
-                                        r: 5,
-                                        padding: 10,
-                                        zIndex: 10
-                                    })
-                                    .css({
-                                        fontSize: '1.5em'
-                                    })
-                                    .add();
+                                editChart(id)
                             },
                             text: 'Editar'
                         },

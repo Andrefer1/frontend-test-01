@@ -35,10 +35,31 @@ export default function Dashboard() {
         setChart([...charts, newChart])
     }
 
+    function editChart(id: number): void {
+        const editedChart = {
+            id,
+            dataName: 'aapl-c',
+            titleText: 'APPLE Stock Price',
+            seriesName: 'APPLE',
+        }
+
+        const chartIndex = charts.findIndex(chart => chart.id === id)
+
+        if (chartIndex === -1) {
+            throw new Error('Chart not found')
+        }
+
+        const newCharts = [...charts]
+
+        newCharts[chartIndex] = editedChart
+
+        setChart(newCharts)
+    }
+
     function deleteChart(id: number): void {
         const chartIndex = charts.findIndex(chart => chart.id === id)
 
-        if (chartIndex < 0) {
+        if (chartIndex === -1) {
             throw new Error('Chart not found')
         }
 
@@ -56,6 +77,7 @@ export default function Dashboard() {
                     <Chart
                         key={chart.id}
                         chart={chart}
+                        editChart={editChart}
                         deleteChart={deleteChart}
                     />
                 )}
