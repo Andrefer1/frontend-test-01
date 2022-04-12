@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 0 20px;
-  margin-bottom: 20px;
 `;
 
 export const Content = styled.div`
   max-width: 1200px;
-  border-bottom: solid 1px var(--grey-300);
   margin: 0 auto;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
+  #addChart {
+    font-size: 70px;
+    float: right;
+    transition: filter 0.2s;
 
-  img {
-    width: 120px;
+    &:hover {
+      cursor: pointer;
+      filter: brightness(0.9);
+    }
   }
 `;
