@@ -14,7 +14,7 @@ let newChart = {
 }
 
 export default function Dashboard() {
-    const [charts, setChart] = useState([newChart] as TChart[])
+    const [charts, setChart] = useState<TChart[]>([newChart])
 
     function addChart(): void {
         newChart = {
@@ -30,13 +30,10 @@ export default function Dashboard() {
     return (
         <Container>
             <Content>
-                {charts.map(({ id, dataName, titleText, seriesName }: TChart) =>
+                {charts.map((chart: TChart) =>
                     <Chart
-                        key={id}
-                        id={id}
-                        dataName={dataName}
-                        titleText={titleText}
-                        seriesName={seriesName}
+                        key={chart.id}
+                        chart={chart}
                     />
                 )}
 

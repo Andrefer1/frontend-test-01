@@ -1,36 +1,39 @@
 import * as Highcharts from 'highcharts';
 import Exporting from 'highcharts/modules/exporting';
 
-Exporting(Highcharts)
+import { Data, TChart } from "../../@types";
 
 interface ChartProps {
-    id: string
-    dataName: string
-    titleText: string
-    seriesName: string
+    chart: TChart
 }
 
-export function Chart({ id, dataName, titleText, seriesName }: ChartProps) {
-    Highcharts.getJSON(`https://demo-live-data.highcharts.com/${dataName}.json`, function (data: any) {
+export function Chart({ chart }: ChartProps) {
+    const { id, dataName, titleText, seriesName } = chart
 
-        Highcharts.chart(`chart-${id}`, {
-            credits: {
-                enabled: false
-            },
-            rangeSelector: {
-                selected: 1
-            },
-            title: {
-                align: 'left',
-                text: titleText
-            },
-            series: [{
-                type: 'line',
-                name: seriesName,
-                data: data,
-            }]
-        })
-    })
+    Exporting(Highcharts)
+
+    Highcharts.getJSON(`https://demo-live-data.highcharts.com/${dataName}.json`,
+        function (data: Data) {
+
+            Highcharts.chart(`chart-${id}`, {
+                credits: {
+                    enabled: false
+                },
+                rangeSelector: {
+                    selected: 1
+                },
+                title: {
+                    align: 'left',
+                    text: titleText
+                },
+                series: [{
+                    type: 'line',
+                    name: seriesName,
+                    data: data,
+                }]
+            })
+        }
+    )
 
     return (
         <>
